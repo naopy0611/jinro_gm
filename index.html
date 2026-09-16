@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jinro GM</title>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#5b21b6">
+</head>
+<body>
+
+  <header class="header">
+    <h1>🐺 Jinro GM</h1>
+    <p>Game Master Edition</p>
+  </header>
+
+  <main id="app">
+    <section class="card">
+      <h2>ようこそ！</h2>
+      <p>v16.0 FINAL</p>
+
+      <button id="startBtn">ゲーム開始</button>
+    </section>
+
+    <section class="card hidden" id="gameArea">
+      <h2 id="phase">1日目・夜</h2>
+
+      <div class="status">
+        <div>
+          <span>生存者</span>
+          <strong id="alive">9</strong>
+        </div>
+
+        <div>
+          <span>日数</span>
+          <strong id="day">1</strong>
+        </div>
+      </div>
+
+      <button id="nextBtn">朝にする</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
