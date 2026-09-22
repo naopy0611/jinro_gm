@@ -49,8 +49,15 @@ function createRoles(){
   roles=shuffle(pool);
 }
 
-startBtn.onclick=()=>{
+startBtn.onclick = () => {
   createRoles();
+
+  revealIndex = 0;
+  startBtn.parentElement.classList.add("hidden");
+  revealArea.classList.remove("hidden");
+
+  showCurrentPlayer();
+};
 
   gameArea.classList.remove("hidden");
   startBtn.parentElement.classList.add("hidden");
