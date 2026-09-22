@@ -6,7 +6,14 @@ const gameArea = document.getElementById("gameArea");
 const phaseText = document.getElementById("phase");
 const aliveText = document.getElementById("alive");
 const dayText = document.getElementById("day");
+const revealArea = document.getElementById("revealArea");
+const playerName = document.getElementById("playerName");
+const roleText = document.getElementById("roleText");
 
+const showRoleBtn = document.getElementById("showRoleBtn");
+const nextPlayerBtn = document.getElementById("nextPlayerBtn");
+
+let revealIndex = 0;
 const ROLE_POOL = [
   "占い師","人狼","人狼","白狼","狂人",
   "騎士","狩人","医者","霊媒師","パン屋",
