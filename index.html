@@ -3,56 +3,98 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jinro GM</title>
+  <title>Jinro GM FINAL</title>
 
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="style.css">
-  <meta name="theme-color" content="#5b21b6">
+  <meta name="theme-color" content="#6d28d9">
 </head>
 <body>
 
-  <header class="header">
-    <h1>🐺 Jinro GM</h1>
-    <p>Game Master Edition</p>
-  </header>
+<header class="header">
+  <h1>🐺 Jinro GM</h1>
+  <p>FINAL Edition</p>
+</header>
 
-  <main id="app">
-    <section class="card">
-      <h2>ようこそ！</h2>
-      <p>v16.0 FINAL</p>
+<main>
 
-      <button id="startBtn">ゲーム開始</button>
-    </section>
-<section class="card hidden" id="revealArea">
-  <h2 id="playerName">プレイヤー</h2>
-  <p>本人だけ見てください</p>
+  <!-- スタート画面 -->
+  <section id="startScreen" class="card">
+    <h2>ゲーム開始</h2>
 
-  <div id="roleText" style="font-size:28px;margin:20px 0;text-align:center;">
-    ????
-  </div>
+    <label>プレイヤー人数</label>
+    <select id="playerCount">
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option selected>9</option>
+      <option>10</option>
+      <option>11</option>
+      <option>12</option>
+    </select>
 
-  <button id="showRoleBtn">役職を見る</button>
-  <button id="nextPlayerBtn" class="hidden">次の人へ</button>
-</section>
-    <section class="card hidden" id="gameArea">
-      <h2 id="phase">1日目・夜</h2>
+    <div id="nameArea"></div>
 
-      <div class="status">
-        <div>
-          <span>生存者</span>
-          <strong id="alive">9</strong>
-        </div>
+    <button id="startBtn">配役する</button>
+  </section>
 
-        <div>
-          <span>日数</span>
-          <strong id="day">1</strong>
-        </div>
+  <!-- 役職確認 -->
+  <section id="revealScreen" class="card hidden">
+    <h2 id="playerName">プレイヤー</h2>
+
+    <p>本人だけ見てください</p>
+
+    <div id="roleCard">????</div>
+
+    <button id="showRoleBtn">役職を見る</button>
+    <button id="nextPlayerBtn" class="hidden">次の人へ</button>
+  </section>
+
+  <!-- ゲーム画面 -->
+  <section id="gameScreen" class="card hidden">
+
+    <h2 id="phase">1日目 夜</h2>
+
+    <div class="status">
+      <div>
+        <span>生存者</span>
+        <strong id="aliveCount">0</strong>
       </div>
 
-      <button id="nextBtn">朝にする</button>
-    </section>
-  </main>
+      <div>
+        <span>日数</span>
+        <strong id="dayCount">1</strong>
+      </div>
+    </div>
 
-  <script src="app.js"></script>
+    <div id="nightArea">
+      <h3 id="nightRole">占い師</h3>
+
+      <select id="targetSelect"></select>
+
+      <button id="actionBtn">実行</button>
+
+      <p id="resultText"></p>
+    </div>
+
+    <div id="voteArea" class="hidden">
+      <h3>投票</h3>
+
+      <select id="voteSelect"></select>
+
+      <button id="voteBtn">処刑する</button>
+    </div>
+
+    <button id="nextPhaseBtn">朝にする</button>
+
+    <div id="logArea"></div>
+
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+
 </body>
 </html>
