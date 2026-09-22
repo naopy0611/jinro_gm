@@ -7,8 +7,7 @@
 
 body{
   background:#08101f;
-  color:white;
-  min-height:100vh;
+  color:#ffffff;
 }
 
 .header{
@@ -19,64 +18,105 @@ body{
 
 .header p{
   color:#ddd6fe;
-  margin-top:6px;
 }
 
-#app{
+main{
   padding:16px;
 }
 
 .card{
   background:#111827;
   border:1px solid #374151;
-  border-radius:20px;
-  padding:20px;
+  border-radius:18px;
+  padding:18px;
   margin-bottom:16px;
 }
 
-h2{
+.hidden{
+  display:none;
+}
+
+h2,h3{
+  color:white;
   margin-bottom:12px;
 }
 
-.status{
-  display:flex;
-  justify-content:space-between;
-  margin:20px 0;
-}
-
-.status div{
-  background:#1f2937;
-  width:48%;
-  padding:14px;
-  border-radius:14px;
-  text-align:center;
-}
-
-.status span{
+label{
   display:block;
-  color:#9ca3af;
-  font-size:13px;
+  margin:10px 0 6px;
+  color:#d1d5db;
 }
 
-.status strong{
-  font-size:28px;
+select,input{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:none;
+  background:#1f2937;
+  color:white;
+  margin-bottom:10px;
 }
 
 button{
   width:100%;
-  border:none;
-  border-radius:14px;
   padding:14px;
+  border:none;
+  border-radius:12px;
   background:#7c3aed;
   color:white;
   font-size:16px;
   font-weight:bold;
+  margin-top:8px;
 }
 
 button:active{
   transform:scale(.98);
 }
 
-.hidden{
-  display:none;
+.status{
+  display:flex;
+  gap:10px;
+  margin:16px 0;
 }
+
+.status div{
+  flex:1;
+  background:#1f2937;
+  border-radius:12px;
+  padding:12px;
+  text-align:center;
+}
+
+.status span{
+  color:#9ca3af;
+  font-size:13px;
+}
+
+.status strong{
+  display:block;
+  font-size:26px;
+  margin-top:4px;
+}
+
+#roleCard{
+  background:#1f2937;
+  border:2px solid #7c3aed;
+  border-radius:16px;
+  padding:28px;
+  text-align:center;
+  font-size:28px;
+  font-weight:bold;
+  color:white;
+  margin:18px 0;
+}
+
+#resultText{
+  color:#fde68a;
+  font-weight:bold;
+  margin-top:10px;
+  text-align:center;
+}
+
+#logArea{
+  margin-top:18px;
+  background:#1f2937;
