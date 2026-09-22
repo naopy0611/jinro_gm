@@ -78,3 +78,47 @@ showRoleBtn.onclick=()=>{
   showRoleBtn.classList.add("hidden");
   nextPlayerBtn.classList.remove("hidden");
 };
+// ===== Part4 =====
+
+// ゲーム画面
+const phase = document.getElementById("phase");
+const aliveCount = document.getElementById("aliveCount");
+const dayCount = document.getElementById("dayCount");
+const nextPhaseBtn = document.getElementById("nextPhaseBtn");
+
+let alive = [];
+let day = 1;
+let isNight = true;
+
+nextPlayerBtn.onclick = () => {
+  revealIndex++;
+
+  if(revealIndex >= players.length){
+    revealScreen.classList.add("hidden");
+    gameScreen.classList.remove("hidden");
+
+    alive = Array(players.length).fill(true);
+    updateGame();
+    return;
+  }
+
+  showCurrent();
+};
+
+function updateGame(){
+  phase.textContent = `${day}日目 ${isNight ? "夜🌙" : "昼☀️"}`;
+  dayCount.textContent = day;
+  aliveCount.textContent = alive.filter(v=>v).length;
+
+  nextPhaseBtn.textContent =
+    isNight ? "朝にする" : "投票へ";
+}
+
+nextPhaseBtn.onclick = () => {
+  if(isNight){
+    isNight = false;
+    updateGame();
+  }else{
+    startVote();
+  }
+};
