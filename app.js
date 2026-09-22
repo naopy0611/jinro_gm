@@ -98,3 +98,29 @@ if("serviceWorker" in navigator){
     navigator.serviceWorker.register("./service-worker.js");
   });
 }
+function showCurrentPlayer(){
+  playerName.textContent = players[revealIndex];
+  roleText.textContent = "????";
+
+  showRoleBtn.classList.remove("hidden");
+  nextPlayerBtn.classList.add("hidden");
+}
+
+showRoleBtn.onclick = () => {
+  roleText.textContent = roles[revealIndex];
+  showRoleBtn.classList.add("hidden");
+  nextPlayerBtn.classList.remove("hidden");
+};
+
+nextPlayerBtn.onclick = () => {
+  revealIndex++;
+
+  if(revealIndex >= players.length){
+    revealArea.classList.add("hidden");
+    gameArea.classList.remove("hidden");
+    updateScreen();
+    return;
+  }
+
+  showCurrentPlayer();
+};
