@@ -122,3 +122,91 @@ nextPhaseBtn.onclick = () => {
     startVote();
   }
 };
+// ===== 投票 =====
+const voteArea = document.getElementById("voteArea");
+const voteSelect = document.getElementById("voteSelect");
+const voteBtn = document.getElementById("voteBtn");
+const logArea = document.getElementById("logArea");
+
+function startVote(){
+  voteArea.classList.remove("hidden");
+  voteSelect.innerHTML = "";
+
+  players.forEach((p,i)=>{
+    if(alive[i]){
+      const op = document.createElement("option");
+      op.value = i;
+      op.textContent = p;
+      voteSelect.appendChild(op);
+    }
+  });
+}
+
+voteBtn.onclick = () => {
+  const i = Number(voteSelect.value);
+
+  alive[i] = false;
+
+  addLog(`⚰️ ${players[i]} を処刑（${roles[i]}）`);
+
+  voteArea.classList.add("hidden");
+
+  checkWinner();
+
+  if(!gameOver){
+    day++;
+    isNight = true;
+    updateGame();
+  }
+};
+
+// ===== ログ =====
+function addLog(text){
+  const p = document.createElement("div");
+  p.textContent = text;
+  logArea.prepend(p);
+}
+
+// ===== 勝利判定 =====
+let gameOver = false;
+
+function checkWinner(){
+
+  const wolves = roles.filter((r,i)=>
+    alive[i] && (r==="人狼" || r==="白狼")
+  ).length;
+
+  const fox = roles.some((r,i)=>
+    alive[i] && r==="妖狐"
+  );
+
+  const villagers = roles.filter((r,i)=>
+    alive[i] &&
+    !["人狼","白狼","狂人","妖狐"].includes(r)
+  ).length;
+
+  if(wolves===0 && !fox){
+    alert("🏆 村人陣営の勝利！");
+    gameOver = true;
+    return;
+  }
+
+  if(fox && wolves===0){
+    alert("🦊 妖狐の勝利！");
+    gameOver = true;
+    return;
+  }
+
+  if(wolves>=villagers && wolves>0){
+    alert("🐺 人狼陣営の勝利！");
+    gameOver = true;
+    return;
+  }
+}
+
+// ===== PWA =====
+if("serviceWorker" in navigator){
+  window.addEventListener("load",()=>{
+    navigator.serviceWorker.register("./service-worker.js");
+  });
+}
