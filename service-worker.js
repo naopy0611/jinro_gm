@@ -1,4 +1,4 @@
-const CACHE = "jinro-gm-v1";
+const CACHE = "jinro-gm-v2";
 
 const FILES = [
   "./",
